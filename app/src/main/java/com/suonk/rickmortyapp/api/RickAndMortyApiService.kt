@@ -1,6 +1,7 @@
 package com.suonk.rickmortyapp.api
 
-import com.suonk.rickmortyapp.models.data.ApiResponse
+import com.suonk.rickmortyapp.models.data.CharactersApiResponse
+import com.suonk.rickmortyapp.models.data.EpisodesApiResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -8,27 +9,24 @@ import retrofit2.http.Query
 interface RickAndMortyApiService {
 
     companion object {
-        const val BASE_URL = "https://rickandmortyapi.com/api"
+        const val BASE_URL = "https://rickandmortyapi.com/api/"
     }
 
-    @GET("/character/")
+    @GET("character")
     suspend fun getAllCharacters(
-        id: Int?,
         @Query("page")
         page: String?
-    ): Response<ApiResponse>
+    ): Response<CharactersApiResponse>
 
-    @GET("/location/")
+    @GET("location")
     suspend fun getAllLocations(
-        id: Int?,
         @Query("page")
         page: String?
-    ): Response<ApiResponse>
+    ): Response<CharactersApiResponse>
 
-    @GET("/episode/")
+    @GET("episode")
     suspend fun getAllEpisodes(
-        id: Int?,
         @Query("page")
         page: String?
-    ): Response<ApiResponse>
+    ): Response<EpisodesApiResponse>
 }
