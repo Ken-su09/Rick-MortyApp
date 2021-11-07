@@ -1,9 +1,10 @@
 package com.suonk.rickmortyapp.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.suonk.rickmortyapp.models.data.ApiResponse
+import com.suonk.rickmortyapp.models.data.CharactersApiResponse
 import com.suonk.rickmortyapp.models.data.Result
 import com.suonk.rickmortyapp.repositories.DefaultRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,17 +15,33 @@ import javax.inject.Inject
 class AllCharactersViewModel @Inject constructor(private val repository: DefaultRepository) :
     ViewModel() {
 
-    val allCharactersLiveData = MutableLiveData<ApiResponse>()
+    val allCharactersLiveData = MutableLiveData<CharactersApiResponse>()
     val characterSelectedLiveData = MutableLiveData<Result>()
+    val searchBarText = MutableLiveData<String>()
 
-    fun getAllCharacters(id: Int?, page: String?) = viewModelScope.launch {
-        val response = repository.getAllCharacters(id, page)
+    var pageNumber = 1
+    var characterResponse: CharactersApiResponse? = null
+
+    fun getAllCharacters() = viewModelScope.launch {
+        val response = repository.getAllCharacters(pageNumber.toString())
         if (response.isSuccessful) {
-            allCharactersLiveData.postValue(response.body())
+            pageNumber += 1
+            if (characterResponse == null) {
+                characterResponse = response.body()
+            } else {
+                val oldCharacters = characterResponse?.results
+                val newCharacters = response.body()?.results
+                newCharacters?.let { oldCharacters?.addAll(it) }
+            }
+            allCharactersLiveData.postValue(characterResponse ?: response.body())
         }
     }
 
     fun setCharacterSelected(character: Result) {
         characterSelectedLiveData.postValue(character)
+    }
+
+    fun setSearchText(text: String) {
+        searchBarText.postValue(text)
     }
 }

@@ -7,54 +7,42 @@
     android:background="@drawable/item_background_selector">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/character_picture"
+        android:id="@+id/episode_picture"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="20dp"
+        android:src="@drawable/episodes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/character_status"
+        android:id="@+id/episode_episode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="#61bd70"
-        app:layout_constraintBottom_toTopOf="@+id/character_name"
-        app:layout_constraintStart_toStartOf="@+id/character_name"
-        app:layout_constraintTop_toTopOf="@+id/character_picture"
-        tools:text="ALIVE" />
+        android:textColor="#408e9e"
+        app:layout_constraintBottom_toTopOf="@+id/episode_name"
+        app:layout_constraintStart_toStartOf="@+id/episode_name"
+        app:layout_constraintTop_toTopOf="@+id/episode_picture" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/character_name"
+        android:id="@+id/episode_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/character_picture"
-        app:layout_constraintStart_toEndOf="@+id/character_picture"
-        app:layout_constraintTop_toTopOf="@+id/character_picture"
-        tools:text="Rick Sanchez" />
+        app:layout_constraintBottom_toBottomOf="@+id/episode_picture"
+        app:layout_constraintStart_toEndOf="@+id/episode_picture"
+        app:layout_constraintTop_toTopOf="@+id/episode_picture" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/race_value"
+        android:id="@+id/episode_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#6e7e8e"
-        app:layout_constraintStart_toStartOf="@+id/character_name"
-        app:layout_constraintTop_toBottomOf="@+id/character_name"
-        tools:text="Human," />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/gender_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:textColor="#6e7e8e"
-        app:layout_constraintStart_toEndOf="@+id/race_value"
-        app:layout_constraintTop_toBottomOf="@+id/character_name"
-        tools:text="Male" />
+        app:layout_constraintStart_toStartOf="@+id/episode_name"
+        app:layout_constraintTop_toBottomOf="@+id/episode_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

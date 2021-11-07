@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.main_pages.AllCharactersFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/total_characters_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Total Characters:"
+            android:textColor="@color/lightGrey"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/total_characters_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/lightGrey"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/total_characters_title"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="671" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/characters_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/total_characters_title"
+            tools:listitem="@layout/item_character" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/characters_recycler_view"
+            app:layout_constraintEnd_toEndOf="@+id/characters_recycler_view"
+            app:layout_constraintStart_toStartOf="@+id/characters_recycler_view"
+            app:layout_constraintTop_toTopOf="@+id/characters_recycler_view" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
